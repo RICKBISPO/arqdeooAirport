@@ -15,7 +15,7 @@ public class TookOff implements State {
 
     @Override
     public void change(FlightData fligth) {
-        fligth.setState(TookOff.getInstance());
+        
     }
 }
 
