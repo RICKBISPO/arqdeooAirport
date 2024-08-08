@@ -2,7 +2,12 @@ package clientcode;
 
 import data.airport.model.FlightData;
 import data.airport.model.FlightDataCollection;
+import data.airport.model.totem.Totem;
+import data.airport.states.Arriving;
+import data.airport.states.State;
+import data.airport.states.TakingOff;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Airport {
@@ -10,6 +15,15 @@ public class Airport {
     private final FlightDataCollection collection = new FlightDataCollection();
 
     public void run() {
+
+        State takingOff = TakingOff.getInstance();
+        State arriving = Arriving.getInstance();
+        
+        collection.register(new Totem("Taking Off", List.of(takingOff)));
+        collection.register(new Totem("Arriving", List.of(arriving)));
+        collection.register(new Totem("Arriving and Taking Off", List.of(TakingOff.getInstance(), Arriving.getInstance())));
+
+        
         int option;
         do{
             System.out.println("1 - Novo voo");
